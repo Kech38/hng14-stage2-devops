@@ -171,11 +171,23 @@ jobs:
           severity: CRITICAL
           exit-code: "0"
 
-      - name: Upload SARIF results
+      - name: Upload frontend SARIF
         uses: github/codeql-action/upload-sarif@v4
-        if: always()
         with:
-          sarif_file: .
+          sarif_file: frontend-trivy.sarif
+          category: frontend
+
+      - name: Upload API SARIF
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: api-trivy.sarif
+          category: api
+
+      - name: Upload worker SARIF
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: worker-trivy.sarif
+          category: worker
 
   integration:
     runs-on: ubuntu-latest
