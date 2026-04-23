@@ -147,6 +147,7 @@ jobs:
           image-ref: frontend:latest
           format: sarif
           output: frontend-trivy.sarif
+          category: frontend
           severity: CRITICAL
           exit-code: "0"
 
@@ -156,6 +157,7 @@ jobs:
           image-ref: api:latest
           format: sarif
           output: api-trivy.sarif
+          category: api
           severity: CRITICAL
           exit-code: "0"
 
@@ -165,6 +167,7 @@ jobs:
           image-ref: worker:latest
           format: sarif
           output: worker-trivy.sarif
+          category: worker
           severity: CRITICAL
           exit-code: "0"
 
