@@ -5,11 +5,10 @@ import os
 
 app = FastAPI()
 
-redis_password = os.getenv("REDIS_PASSWORD", None)
 r = redis.Redis(
     host=os.getenv("REDIS_HOST", "redis"),
     port=int(os.getenv("REDIS_PORT", 6379)),
-    password=redis_password if redis_password else None
+    password=os.getenv("REDIS_PASSWORD") or None
 )
 
 
@@ -20,11 +19,7 @@ def root():
 
 @app.get("/health")
 def health():
-    try:
-        r.ping()
-        return {"message": "healthy"}
-    except Exception:
-        return {"message": "healthy"}
+    return {"message": "healthy"}
 
 
 @app.post("/jobs")
