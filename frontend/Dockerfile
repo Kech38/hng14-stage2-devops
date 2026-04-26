@@ -21,7 +21,7 @@ USER appuser
 
 EXPOSE 3000
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+HEALTHCHECK --interval=15s --timeout=10s --start-period=40s --retries=5 \
   CMD wget -qO- http://localhost:3000 || exit 1
 
 CMD ["node", "app.js"]
